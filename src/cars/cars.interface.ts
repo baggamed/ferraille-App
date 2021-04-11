@@ -6,5 +6,6 @@ export interface Car extends Document{
     readonly genrecar:string;
     readonly marquecar:string;
     readonly modelcar:string;
+    readonly type:string;
     readonly pieces:[Pièce];
 }
