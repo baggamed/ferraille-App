@@ -24,4 +24,5 @@ export class CamionsController {
     public getCamionById(@Param('numcamion') numcamion:Number){
         return this.camionsService.getCamById(numcamion);
     }
+    
 }
