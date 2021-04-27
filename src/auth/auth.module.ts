@@ -1,4 +1,4 @@
-import { Module } from "@nestjs/common";
+import { forwardRef, Module } from "@nestjs/common";
 import { UsersModule } from "src/user/user.module";
 import { AuthController } from "./auth.controller";
 import { AuthService } from "./auth.service";
@@ -8,7 +8,8 @@ import { JWT_EXPIRES_TIME, JWT_SECRET_KEY } from "common/config";
 
 @Module({
     imports: [
-       UsersModule,
+        forwardRef(() => UsersModule),
+       
        JwtModule.register({
  
         secret: JWT_SECRET_KEY,

@@ -8,17 +8,15 @@ export class PiècesController {
     ){}
     @Get()
     async findAll(){
-        return await this.piècesService.find()
+        return await this.piècesService.findAll()
     }
 
     @Post()
     async create(@Body() body){
         return await this.piècesService.create(body)
     }
-    @Get(':nompiece')
-    public getPièceByName(@Param('nompiece') nompiece: String) {
-        return this.piècesService.getPièceByName(nompiece);
-    }
+    
+    
     @Delete(':nompiece')
     public deletePièceByName(@Param('nompiece') nompiece: String){
         this.piècesService.deletePièceByName(nompiece);

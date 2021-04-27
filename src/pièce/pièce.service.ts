@@ -27,6 +27,11 @@ export class PiècesService{
     async find():Promise<Pièce[]>{
         return await this.piècesModel.find().exec()
     }
+    async findAll(criteria = {}, select: any = {}): Promise<Pièce[]> {
+    
+        return await this.piècesModel.find(criteria, select).exec();
+        
+        }
     
 
     async create (pièceDto): Promise<Pièce> {
