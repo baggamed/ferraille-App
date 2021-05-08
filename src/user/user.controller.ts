@@ -17,7 +17,6 @@ export class UsersController {
     //@UseGuards(AuthGuard())
     @UsePipes(ValidationPipe)
     async changePassword(@Res() res, @Req() req, @Body() body): Promise<any> {
-        console.log("haithem");
         
         const currentUser = await this.authService.getAuthUser(req);
         const compare = await bcrypt.compare(body.oldPassword, currentUser.password);
@@ -35,26 +34,16 @@ export class UsersController {
             message: 'Password changed',
         });
     }
-
-
     @Get()
     async findAll() {
         return await this.usersService.findAll()
     }
-
     @Get("/criteria")
     async findAllByCriteria(@Query() query) {
-        console.log(query);
-
-
         return await this.usersService.findAll(query)
     }
-
     @Post()
     async create(@Body() body) {
         return await this.usersService.create(body)
     }
-
-
-    
 }

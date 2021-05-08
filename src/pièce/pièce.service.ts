@@ -9,13 +9,7 @@ export class PiècesService{
         @InjectModel('pieces')
         private readonly piècesModel : Model<Pièce>
     ){}
-    public async getPièceByName(nompiece :String): Promise<any>{
-        const pièce= this.piècesModel.findOne({nompiece}).exec();
-        if (!pièce) {
-                throw new HttpException('Not found',404);
-            }
-        return pièce;
-    }
+ 
     public  async deletePièceByName(nompièce:String){
             const pièce= this.piècesModel.deleteOne({nompièce}).exec();
             if ((await pièce).deletedCount===0){
@@ -45,6 +39,7 @@ export class PiècesService{
         }
         return pièces;
     }
+    
     
 
 }

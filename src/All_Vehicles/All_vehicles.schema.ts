@@ -1,17 +1,5 @@
 import { Schema } from "mongoose";
-import { PiècesSchema } from "src/pièce/pièce.schema";
-// const blockSchema = new Schema (
-//     {
-
-//         nom :{
-//             type:String
-//         },
-//         pieces:{
-//             type:[]
-//         }
-//     }
-// ) 
-export const VehicleSchema=new Schema(
+export const All_VehicleSchema=new Schema(
     
     {
         id: {

@@ -1,4 +1,6 @@
-import { Body, Controller, Get, Param, Post, Query } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post, Put, Query, } from "@nestjs/common";
+import { get } from "mongoose";
+import { Pièce } from "src/pièce/pièce.interface";
 import { VehicleService } from "./vehicle.service";
 
 @Controller('vehicles')
@@ -20,25 +22,37 @@ export class VehiclesController {
     async findAll() {
         return await this.VehiclesService.findAll()
     }
-    @Get(':type')
-    async getMarque(@Param('type') type: string) {
-        const vehicle = await this.VehiclesService.findCustomCriteria(type);
-        return vehicle
-    }
 
-    @Get(':marquecar')
+    @Get('/:marquecar/:nompiece')
+    async getPiecesbyName(@Param('marquecar') marquecar: string,@Param('nompiece') nompiece: string) {
+        let data = []
+        const vehicle = await this.VehiclesService.find({marquecar});
+        for (let i = 0; i < vehicle.length; i++) {
+            for (let j=0;j<vehicle[i].blocks.length;j++){
 
-    async getModelByMarque(@Param('marquecar') marquecar: string) {
-        const Model = [];
-        const vehicle = await this.VehiclesService.find();
+            if (vehicle[i].blocks[j].nom === nompiece) {
 
-        for (let k = 0; k < vehicle.length; k++) {
-            if (vehicle[k].marquecar === marquecar) {
-                Model.push(vehicle[k].modelcar);
+                data.push(vehicle[i])
             }
         }
-        return Model
+        }
+        return data
     }
+    @Delete(':id')
+    async deleteCarById(@Param('id') id: Number){
+        this.VehiclesService.deleteVehicleById(id);
+    }
+//
+//    @Put('id/:criteria')
+//     async update(@Param('id')id : Number,@Query() query){
+//         const 
+//     }
+
+
+
+
+
+
 }
 
 

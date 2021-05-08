@@ -11,7 +11,10 @@ export class CarsService{
     ){}
 
     async find():Promise<Car[]>{
+        console.log("haithem",await this.carsModel.find().exec());
+
         return await this.carsModel.find().exec()
+        
     }
 
     async create (carDto): Promise<Car> {

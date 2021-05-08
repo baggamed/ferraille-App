@@ -9,28 +9,16 @@ export class UsersService {
         @InjectModel('users')
         private readonly usersModel: Model<User>
     ) { }
-
-
     async findOne(criteria, select: any = {}): Promise<User> {
-
         return await this.usersModel.findOne(criteria, select).exec();
-
     }
-
-
     async findAll(criteria = {}, select: any = {}): Promise<User[]> {
-
         return await this.usersModel.find(criteria, select).exec();
-
     }
-
-
-
     /* async find():Promise<User[]>{
          return await this.usersModel.find().exec()
      }
      */
-
     async create(userDto): Promise<User> {
         const user = await this.usersModel.create(userDto)
         return user;
@@ -41,8 +29,6 @@ export class UsersService {
             throw new HttpException('Not found',404);
         }
         return user;}*/
-
-
     async update(id: string, updateUserDto: any): Promise<any> {
         return await this.usersModel.findByIdAndUpdate(id, { $set: updateUserDto },
             { new: true },

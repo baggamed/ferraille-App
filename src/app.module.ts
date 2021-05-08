@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { DatabaseModule } from 'common/database/database.module';
+import { All_VehiclesModule } from './All_Vehicles/All_vehicles.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
@@ -14,20 +15,23 @@ import { CommandsModule } from './commands/commands.module';
 import { MotosModule } from './moto/moto.module';
 import { PiècesModule } from './pièce/pièce.module';
 import { UsersModule } from './user/user.module';
+import { VehiclesModule } from './vehicle/vehicle.module';
 
 
 @Module({
   imports: [
     DatabaseModule,
-    CarsModule,
+    All_VehiclesModule,
+  /*CarsModule,
     MotosModule,
     BussModule,
     CamionsModule,
     ClientsModule,
-    CommandsModule,
+    CommandsModule,*/
     PiècesModule,
     UsersModule,
     AuthModule,
+    VehiclesModule
     
     
     

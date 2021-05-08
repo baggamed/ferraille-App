@@ -25,13 +25,10 @@ export class CarsController {
         for (let i=0;i<cars.length;i++){
             //console.log("bagga",cars[4].pieces);
             for (let j=0;j< cars[i].pieces.length;j++){
-                console.log(cars[4]);
                 
-                console.log("haithem",cars[i].pieces[j].nompiece===nompiece);
-                
-                if(cars[i].pieces[j].nompiece===nompiece){
+                if(cars[i].pieces[j].nom===nompiece){
                     data.push(cars[i].genrecar)
-                    console.log("haithem");
+            
                     
                 }
             }
